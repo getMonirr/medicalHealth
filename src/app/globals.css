@@ -2,32 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* "med-white": "#ffffff",
+        "med-primary": "#03ACF2",
+        "med-primary-light": "#B3E5FC",
+        "med-primary-dark": "#00579b",
+        "med-text": "#000000de",
+        "med-text-light": "#0000008a",
+        "med-green": "#4CAF50", */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --med-white: #ffffff;
+  --med-primary: #03acf2;
+  --med-primary-light: #b3e5fc;
+  --med-primary-dark: #00579b;
+  --med-text: #000000de;
+  --med-text-light: #0000008a;
+  --med-green: #4caf50;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --med-white: 0, 0, 0;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+input:focus ~ .floating-label {
+  color: var(--med-primary);
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+  top: 0px;
+  left: 2px;
+  font-size: 11px;
+  opacity: 1;
+}
+
+.inputText {
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  padding-left: 4px;
+  color: var(--med-text);
+}
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  top: 18px;
+  left: 0px;
+  transition: 0.2s ease all;
+  color: var(--med-primary);
+}
+.inputText {
+  outline: none;
+  border-bottom: 1px solid darkgray;
+}
+
+.inputText:focus {
+  border-bottom: 1px solid var(--med-primary);
+}
+.floating-label {
+  color: darkgray;
 }

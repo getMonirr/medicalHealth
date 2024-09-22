@@ -18,7 +18,7 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const DrdForm = ({
+const MedForm = ({
   onSubmit,
   children,
   defaultValues,
@@ -47,4 +47,4 @@ const DrdForm = ({
   );
 };
 
-export default DrdForm;
+export default MedForm;

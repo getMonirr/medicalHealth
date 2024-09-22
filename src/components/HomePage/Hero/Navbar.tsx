@@ -55,16 +55,20 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-8">
-          <Button
-            type="text"
-            style={{
-              font: "bold",
-              textTransform: "uppercase",
-            }}
-          >
-            Login
-          </Button>
-          <MedBtn className="z-50">Register</MedBtn>
+          <Link href="/auth/login">
+            <Button
+              type="text"
+              style={{
+                font: "bold",
+                textTransform: "uppercase",
+              }}
+            >
+              Login
+            </Button>
+          </Link>
+          <Link href="/auth/register" className="z-50">
+            <MedBtn>Register</MedBtn>
+          </Link>
           <div className="bg-[#979797] h-[25px] w-[2px]"></div>
           <Button
             style={{
