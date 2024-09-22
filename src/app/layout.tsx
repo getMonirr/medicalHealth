@@ -1,13 +1,17 @@
 import AllProviders from "@/providers/AllProviders";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 
-// inter font
-const inter = Inter({ subsets: ["latin"] });
+// lato font
+const lato = Lato({
+  weight: ["400", "700", "900"],
+  subsets: ["latin"],
+  style: "normal",
+});
 
 export const metadata: Metadata = {
-  title: "Typescript Next.js Starter",
+  title: "Medical Health",
   description: "Created by @getMonirr",
 };
 
@@ -25,8 +29,9 @@ export default function RootLayout({
         // horizontal scrolling hidden
         overflowX: "hidden",
       }}
+      className="bg-med-white text-med-text"
     >
-      <body className={inter.className}>
+      <body className={lato.className}>
         <AllProviders>{children}</AllProviders>
       </body>
     </html>
