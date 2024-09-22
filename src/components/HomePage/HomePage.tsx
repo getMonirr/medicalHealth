@@ -1,4 +1,5 @@
 import assets from "@/assets";
+import DoctorSection from "./Doctor/DoctorSection";
 import Banner from "./Hero/Banner";
 import HeroCard from "./Hero/HeroCard";
 import Navbar from "./Hero/Navbar";
@@ -17,6 +18,7 @@ const HomePage = () => {
       <Navbar />
       <Banner />
       <HeroCard />
+      <DoctorSection />
     </>
   );
 };
