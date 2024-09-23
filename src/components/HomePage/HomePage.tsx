@@ -1,4 +1,5 @@
 import assets from "@/assets";
+import ClinicSection from "./Clinic/ClinicSection";
 import DoctorSection from "./Doctor/DoctorSection";
 import Banner from "./Hero/Banner";
 import HeroCard from "./Hero/HeroCard";
@@ -21,6 +22,7 @@ const HomePage = () => {
       <HeroCard />
       <DoctorSection />
       <Testimonial />
+      <ClinicSection />
     </>
   );
 };
