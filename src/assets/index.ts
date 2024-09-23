@@ -4,6 +4,7 @@ import Login from "@/assets/images/home/Login.png";
 import Logo from "@/assets/images/home/Logo.png";
 import HeroCornerBg from "@/assets/images/home/Oval.png";
 import Register from "@/assets/images/home/Register.png";
+import TestimonialsImage from "@/assets/images/home/testomonials.png";
 
 const assets = {
   icons: {},
@@ -14,6 +15,7 @@ const assets = {
     heroCornerBg: HeroCornerBg,
     register: Register,
     login: Login,
+    testimonialsImage: TestimonialsImage,
   },
   svgs: {},
 };

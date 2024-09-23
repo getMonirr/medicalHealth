@@ -8,6 +8,12 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
         token: {
           colorPrimary: "#03ACF2",
         },
+        components: {
+          Carousel: {
+            dotHeight: "10px",
+            dotWidth: "10px",
+          },
+        },
       }}
     >
       {children}

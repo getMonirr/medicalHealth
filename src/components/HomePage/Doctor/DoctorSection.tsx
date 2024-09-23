@@ -1,7 +1,7 @@
 "use client";
 
 import RootContainer from "@/components/Shared/RootContainer";
-import SectionStarter from "@/components/Shared/SectionStarter";
+import SectionSpacer from "@/components/Shared/SectionSpacer";
 import DoctorCard from "./DoctorCard";
 
 const doctorSpecialtyList = [
@@ -69,7 +69,7 @@ const doctors = [
 
 const DoctorSection = () => {
   return (
-    <SectionStarter>
+    <SectionSpacer>
       <RootContainer>
         <div className="flex gap-24">
           <div className="mt-20">
@@ -92,7 +92,7 @@ const DoctorSection = () => {
           </div>
         </div>
       </RootContainer>
-    </SectionStarter>
+    </SectionSpacer>
   );
 };
 

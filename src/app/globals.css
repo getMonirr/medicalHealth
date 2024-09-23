@@ -17,6 +17,7 @@
   --med-text: #000000de;
   --med-text-light: #0000008a;
   --med-green: #4caf50;
+  --med-carousel: #b3e5fc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,4 +70,13 @@ input:not(:focus):valid ~ .floating-label {
 }
 .floating-label {
   color: darkgray;
+}
+
+/* swiper css */
+.testimonials-swiper .swiper-pagination .swiper-pagination-bullet {
+  background: var(--med-primary) !important;
+}
+
+.testimonials-swiper .swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--med-primary-dark) !important;
 }

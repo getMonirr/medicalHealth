@@ -3,6 +3,7 @@ import DoctorSection from "./Doctor/DoctorSection";
 import Banner from "./Hero/Banner";
 import HeroCard from "./Hero/HeroCard";
 import Navbar from "./Hero/Navbar";
+import Testimonial from "./Testimonial/Testimonial";
 
 const HomePage = () => {
   return (
@@ -19,6 +20,7 @@ const HomePage = () => {
       <Banner />
       <HeroCard />
       <DoctorSection />
+      <Testimonial />
     </>
   );
 };
