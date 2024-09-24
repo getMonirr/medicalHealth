@@ -2,7 +2,11 @@
 
 import RootContainer from "@/components/Shared/RootContainer";
 import SectionSpacer from "@/components/Shared/SectionSpacer";
+import { useGetDoctorsQuery } from "@/libs/redux/features/doctor/doctorApi";
+import { IDoctor } from "@/types/doctor";
+import { useState } from "react";
 import DoctorCard from "./DoctorCard";
+import LoadingDoctorCard from "./LoadingDoctorCard";
 
 const doctorSpecialtyList = [
   {
@@ -22,52 +26,11 @@ const doctorSpecialtyList = [
   },
 ];
 
-const doctors = [
-  {
-    name: "Dr. Emma Johnson",
-    specialty: "Cardiologist",
-    likes: 320,
-    experience: "12 years",
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
-  },
-  {
-    name: "Dr. Daniel Lee",
-    specialty: "Orthopedic Surgeon",
-    likes: 410,
-    experience: "8 years",
-    image: "https://randomuser.me/api/portraits/men/55.jpg",
-  },
-  {
-    name: "Dr. Sophia Martinez",
-    specialty: "Pediatrician",
-    likes: 280,
-    experience: "10 years",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    name: "Dr. James Smith",
-    specialty: "Neurologist",
-    likes: 510,
-    experience: "15 years",
-    image: "https://randomuser.me/api/portraits/men/41.jpg",
-  },
-  {
-    name: "Dr. Olivia Chen",
-    specialty: "Dermatologist",
-    likes: 340,
-    experience: "7 years",
-    image: "https://randomuser.me/api/portraits/women/32.jpg",
-  },
-  {
-    name: "Dr. Michael Thompson",
-    specialty: "Psychiatrist",
-    likes: 230,
-    experience: "9 years",
-    image: "https://randomuser.me/api/portraits/men/61.jpg",
-  },
-];
-
 const DoctorSection = () => {
+  const [selectedSpecialty, setSelectedSpecialty] = useState("All");
+
+  const { data, isLoading, isFetching } = useGetDoctorsQuery(selectedSpecialty);
+
   return (
     <SectionSpacer>
       <RootContainer>
@@ -77,7 +40,12 @@ const DoctorSection = () => {
             <ul className="space-y-6">
               {doctorSpecialtyList.map((item) => (
                 <li
-                  className="font-normal text-2xl leading-9 cursor-pointer hover:bg-[#B3E5FC] hover:text-med-primary-dark pl-4 rounded-full"
+                  onClick={() => setSelectedSpecialty(item.title)}
+                  className={`font-normal text-2xl leading-9 cursor-pointer hover:bg-[#B3E5FC] hover:text-med-primary-dark pl-4 rounded-full ${
+                    selectedSpecialty === item.title
+                      ? "bg-[#B3E5FC] text-med-primary-dark"
+                      : "text-med-text-light"
+                  }`}
                   key={item.title}
                 >
                   {item.title}
@@ -86,9 +54,15 @@ const DoctorSection = () => {
             </ul>
           </div>
           <div className="grid grid-cols-2 gap-y-20 gap-x-20">
-            {doctors.map((doctor, index) => (
-              <DoctorCard key={index} doctor={doctor} />
-            ))}
+            {isLoading || isFetching
+              ? Array.from({ length: 4 }).map((_, index) => (
+                  <LoadingDoctorCard key={index + 3} />
+                ))
+              : data &&
+                Array.isArray(data.data) &&
+                data.data.map((doctor: IDoctor) => (
+                  <DoctorCard key={doctor._id} doctor={doctor} />
+                ))}
           </div>
         </div>
       </RootContainer>

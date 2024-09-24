@@ -1,9 +1,11 @@
 import RootContainer from "@/components/Shared/RootContainer";
 import SectionSpacer from "@/components/Shared/SectionSpacer";
 import SectionStarter from "@/components/Shared/SectionStarter";
+import { IClinic } from "@/types/clinic";
+import { fetchServerData } from "@/utils/fetchServerData";
 import ClinicCard from "./ClinicCard";
 
-const clinics = [
+const clinicss = [
   {
     clinic_name: "Sunrise Health Clinic",
     contact_number: "+1 (123) 456-7890",
@@ -48,7 +50,9 @@ const clinics = [
   },
 ];
 
-const ClinicSection = () => {
+const ClinicSection = async () => {
+  const clinics = await fetchServerData("/clinics", 3600);
+
   return (
     <SectionSpacer>
       <SectionStarter
@@ -57,8 +61,8 @@ const ClinicSection = () => {
       />
       <RootContainer>
         <div className="grid grid-cols-2 gap-x-24 gap-y-6">
-          {clinics.map((clinic) => (
-            <ClinicCard key={clinic.clinic_name} clinic={clinic} />
+          {clinics?.data?.map((clinic: IClinic) => (
+            <ClinicCard key={clinic._id} clinic={clinic} />
           ))}
         </div>
       </RootContainer>

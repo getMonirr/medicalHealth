@@ -31,7 +31,7 @@ const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
           {likes}%
         </Button>
         <Button type="text" icon={<ImBriefcase color="#0000008a" />}>
-          {experience}
+          {experience} Years
         </Button>
         <MedBtn className="min-w-[120px] uppercase">CHAT</MedBtn>
       </div>

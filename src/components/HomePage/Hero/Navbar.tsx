@@ -37,7 +37,7 @@ const Navbar = () => {
           <ul className="flex items-center gap-8 font-bold text-med-text-light">
             {NavItems.map((item, index) => (
               <Link
-                key={item.link}
+                key={item.name}
                 className={`text-med-primary-dark relative  ${
                   index === 0 ? "text-med-primary" : "text-med-text-light"
                 }`}
