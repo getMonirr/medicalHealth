@@ -1,9 +1,9 @@
 import assets from "@/assets";
-import MedBtn from "@/components/Shared/MedBtn";
 import RootContainer from "@/components/Shared/RootContainer";
 import { Button } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import ProfileOrRegister from "./ProfileOrRegister";
 
 const NavItems = [
   {
@@ -55,20 +55,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-8">
-          <Link href="/auth/login">
-            <Button
-              type="text"
-              style={{
-                font: "bold",
-                textTransform: "uppercase",
-              }}
-            >
-              Login
-            </Button>
-          </Link>
-          <Link href="/auth/register" className="z-50">
-            <MedBtn>Register</MedBtn>
-          </Link>
+          <ProfileOrRegister />
           <div className="bg-[#979797] h-[25px] w-[2px]"></div>
           <Button
             style={{

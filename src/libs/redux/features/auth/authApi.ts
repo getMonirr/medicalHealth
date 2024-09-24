@@ -8,7 +8,7 @@ const authApi = baseApi.injectEndpoints({
     // login a user
     login: builder.mutation({
       query: (data) => ({
-        url: "/login",
+        url: "/users/login",
         method: "POST",
         body: data,
       }),
@@ -18,7 +18,7 @@ const authApi = baseApi.injectEndpoints({
     // register a user
     register: builder.mutation({
       query: (data) => ({
-        url: "/register",
+        url: "/users/register",
         method: "POST",
         body: data,
       }),
@@ -34,24 +34,20 @@ const authApi = baseApi.injectEndpoints({
       providesTags: [tags.USER],
     }),
 
-    // update user profile
-    updateProfile: builder.mutation({
-      query: (data) => ({
-        url: "/profile",
-        method: "PUT",
-        body: data,
-      }),
-      invalidatesTags: [tags.USER],
-    }),
+    // verify email
+    verifyEmail: builder.query({
+      query: ({ token }) => {
+        const params = new URLSearchParams();
+        params.append("token", token);
 
-    // change user password
-    changePassword: builder.mutation({
-      query: (data) => ({
-        url: "/change-password",
-        method: "PUT",
-        body: data,
-      }),
-      invalidatesTags: [tags.USER],
+        return {
+          url: "/users/verify-email",
+          method: "GET",
+          params,
+        };
+      },
+
+      providesTags: [tags.USER],
     }),
   }),
 });
@@ -60,6 +56,5 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useGetProfileQuery,
-  useUpdateProfileMutation,
-  useChangePasswordMutation,
+  useVerifyEmailQuery,
 } = authApi;

@@ -13,7 +13,7 @@ import { appTags } from "../tags";
 // Create a baseQuery with the baseUrl and credentials
 const baseQuery = fetchBaseQuery({
   baseUrl: `${config.apiUrl}`,
-  credentials: "include",
+  // credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
     if (token) {
@@ -29,8 +29,6 @@ const baseQueryModifiedForValidationError: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
-
-  console.log({ result });
 
   if (result?.error?.status === 404) {
     toast.error(
