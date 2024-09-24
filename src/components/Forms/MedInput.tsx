@@ -1,4 +1,7 @@
+import { Button } from "antd";
+import { useState } from "react";
 import { Controller } from "react-hook-form";
+import { BsEyeFill, BsEyeSlash } from "react-icons/bs";
 
 type TInputProps = {
   type: string;
@@ -7,18 +10,19 @@ type TInputProps = {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
-  prefix?: any;
+  isShowPassword?: any;
 };
 
 const MedInput = ({
-  type = "text",
+  type,
   name,
   label,
   placeholder,
   disabled,
   required = true,
-  prefix,
 }: TInputProps) => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+
   return (
     <div className="w-full">
       <Controller
@@ -26,7 +30,7 @@ const MedInput = ({
         render={({ field, fieldState: { error } }) => (
           <div className="relative">
             <input
-              type={type}
+              type={(type === "password" && isShowPassword && "text") || type}
               className="inputText"
               required={required}
               onChange={field.onChange}
@@ -36,6 +40,27 @@ const MedInput = ({
 
               {required && <span className="text-gray-500">*</span>}
             </span>
+            {error && (
+              <span className="text-red-500 text-sm absolute left-0 -bottom-5">
+                {error.message}
+              </span>
+            )}
+            {type === "password" &&
+              (isShowPassword ? (
+                <Button
+                  onClick={() => setIsShowPassword(!isShowPassword)}
+                  type="text"
+                  className="absolute right-0 top-0"
+                  icon={<BsEyeFill />}
+                />
+              ) : (
+                <Button
+                  onClick={() => setIsShowPassword(!isShowPassword)}
+                  type="text"
+                  className="absolute right-0 top-0"
+                  icon={<BsEyeSlash />}
+                />
+              ))}
           </div>
         )}
       />

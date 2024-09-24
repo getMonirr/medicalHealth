@@ -2,6 +2,8 @@
 
 import { cn } from "@/helpers/cn";
 import { useRegisterMutation } from "@/libs/redux/features/auth/authApi";
+import { userValidationSchema } from "@/validation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Modal } from "antd";
 import Link from "next/link";
 import { useState } from "react";
@@ -56,7 +58,10 @@ const RegisterForm = ({ className }: { className?: string }) => {
   return (
     <>
       <div className={cn(className)}>
-        <MedForm onSubmit={handleRegister}>
+        <MedForm
+          onSubmit={handleRegister}
+          resolver={zodResolver(userValidationSchema.registerValidationSchema)}
+        >
           <div className="">
             <div className="space-y-12">
               <div className="space-y-12">
@@ -82,7 +87,7 @@ const RegisterForm = ({ className }: { className?: string }) => {
                   label={
                     <>
                       I have read and accept the Terms of <br />
-                      <Link href="/terms">Service & Privacy Policy </Link>
+                      <Link href="/terms">Service & Privacy Policy</Link>
                     </>
                   }
                 />
@@ -112,7 +117,6 @@ const RegisterForm = ({ className }: { className?: string }) => {
           email and verify your account.
         </p>
       </Modal>
-      ;
     </>
   );
 };

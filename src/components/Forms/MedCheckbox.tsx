@@ -12,7 +12,7 @@ type TInputProps = {
 };
 
 const MedCheckBox = ({
-  type = "checkbox",
+  type,
   name,
   label,
   placeholder,
@@ -28,6 +28,11 @@ const MedCheckBox = ({
           <Checkbox {...field} required={required}>
             {label}
             {required && <span className="text-gray-500">*</span>}
+            {error && (
+              <span className="text-red-500 text-sm absolute left-0 -bottom-8">
+                {error.message}
+              </span>
+            )}
           </Checkbox>
         )}
       />

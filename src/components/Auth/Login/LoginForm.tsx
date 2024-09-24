@@ -7,6 +7,8 @@ import { cn } from "@/helpers/cn";
 import { useLoginMutation } from "@/libs/redux/features/auth/authApi";
 import { setUser } from "@/libs/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/libs/redux/hooks";
+import { userValidationSchema } from "@/validation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "antd";
 import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
@@ -56,7 +58,10 @@ const LoginForm = ({ className }: { className?: string }) => {
 
   return (
     <div className={cn(className)}>
-      <MedForm onSubmit={handleLogin}>
+      <MedForm
+        onSubmit={handleLogin}
+        resolver={zodResolver(userValidationSchema.loginValidationSchema)}
+      >
         <div className="">
           <div className="space-y-12">
             <div className="space-y-12">
