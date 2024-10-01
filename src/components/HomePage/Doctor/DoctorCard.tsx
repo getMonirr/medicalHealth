@@ -1,12 +1,12 @@
-import MedBtn from "@/components/Shared/MedBtn";
 import { IDoctor } from "@/types/doctor";
 import { Button, Divider } from "antd";
 import Image from "next/image";
 import { FaThumbsUp } from "react-icons/fa";
 import { ImBriefcase } from "react-icons/im";
+import ChatOrBooking from "./ChatOrBooking";
 
 const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
-  const { name, specialty, likes, experience, image } = doctor;
+  const { name, specialty, likes, experience, image, _id } = doctor;
   return (
     <div
       style={{
@@ -33,7 +33,7 @@ const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
         <Button type="text" icon={<ImBriefcase color="#0000008a" />}>
           {experience} Years
         </Button>
-        <MedBtn className="min-w-[120px] uppercase">CHAT</MedBtn>
+        <ChatOrBooking doctorId={_id} />
       </div>
     </div>
   );

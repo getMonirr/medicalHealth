@@ -12,6 +12,8 @@
     "@ant-design/nextjs-registry": "^1.0.1",
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^4.6.0",
     "antd": "^5.20.6",
     "aos": "^2.3.4",
     "dotenv": "^16.4.5",
