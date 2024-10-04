@@ -23,8 +23,21 @@ const paymentApi = baseApi.injectEndpoints({
         };
       },
     }),
+
+    // get payments
+    getPayments: builder.query({
+      query: () => {
+        return {
+          url: "/payments",
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useCreatePaymentClientSecretMutation, useMakePaymentMutation } =
-  paymentApi;
+export const {
+  useCreatePaymentClientSecretMutation,
+  useMakePaymentMutation,
+  useGetPaymentsQuery,
+} = paymentApi;

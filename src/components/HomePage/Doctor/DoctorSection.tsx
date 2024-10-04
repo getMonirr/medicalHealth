@@ -34,7 +34,7 @@ const DoctorSection = () => {
   return (
     <SectionSpacer>
       <RootContainer>
-        <div className="flex gap-24">
+        <div className="flex flex-col lg:flex-row gap-24">
           <div className="mt-20">
             <h1 className="font-black text-5xl mb-7">Ask Doctor</h1>
             <ul className="space-y-6">
