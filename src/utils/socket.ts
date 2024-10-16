@@ -1,7 +1,8 @@
 import { io } from "socket.io-client";
 
+export const socket = io("https://medicalhealthbackend.onrender.com");
 // export const socket = io("http://localhost:5000");
-export const socket = io("https://medical-health-snowy.vercel.app");
+// export const socket = io("https://medical-health-snowy.vercel.app");
 
 socket.on("connection", (socket) => {
   console.log("a user connected");
